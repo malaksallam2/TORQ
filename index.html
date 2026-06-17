@@ -182,12 +182,25 @@ h2 { font-family:var(--mono); font-size:clamp(1.6rem,3vw,2.4rem); font-weight:70
 .team-card { background:var(--bg3); padding:1.75rem 1.5rem; transition:background 0.2s; }
 .team-card:hover { background:var(--surface); }
 .avatar { width:50px; height:50px; background:rgba(240,165,0,0.09); border:1px solid rgba(240,165,0,0.22); display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:0.78rem; font-weight:700; color:var(--accent); margin-bottom:1rem; }
+.avatar-photo { width:100%; aspect-ratio:1/1; height:auto; background:none; border:1px solid rgba(240,165,0,0.22); overflow:hidden; border-radius:0; padding:0; margin-bottom:1rem; }
+.member-photo { width:100%; height:100%; object-fit:cover; object-position:center 28%; display:block; filter:brightness(1.05) contrast(1.1); }
 .team-name { font-family:var(--mono); font-size:0.8rem; font-weight:700; color:var(--text); margin-bottom:0.3rem; line-height:1.35; }
 .team-role { font-size:0.76rem; color:var(--muted); margin-bottom:0.6rem; }
 .role-badge { display:inline-block; font-family:var(--mono); font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.18rem 0.5rem; }
 .badge-hw   { background:rgba(240,165,0,0.11);  color:#f0a500; border:1px solid rgba(240,165,0,0.25); }
 .badge-sw   { background:rgba(255,107,53,0.09); color:#ff6b35; border:1px solid rgba(255,107,53,0.25); }
 .badge-both { background:rgba(240,165,0,0.08);  color:#f0a500; border:1px solid rgba(240,165,0,0.2); }
+
+/* ── TEAM CONTACTS ── */
+.team-contacts { display:flex; gap:8px; margin-top:0.6rem; }
+.team-contacts a {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:32px; height:32px; border-radius:6px;
+  border:1.5px solid var(--border2); color:var(--muted);
+  text-decoration:none; font-size:14px; font-weight:700;
+  font-family:var(--mono); transition:border-color 0.2s, color 0.2s, transform 0.15s;
+}
+.team-contacts a:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
 
 /* ── FOOTER ── */
 footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:2rem 3rem; background:var(--bg); display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:1rem; }
@@ -210,23 +223,9 @@ h1          { animation:fadeUp 0.5s ease 0.22s both; }
   #hero{padding:7rem 1.5rem 3rem}
   footer{grid-template-columns:1fr;text-align:center}
   .footer-right{text-align:center}
+  .team-grid{grid-template-columns:1fr}
 }
 
-.avatar-photo {
-  background: none;
-  border: 1px solid rgba(240,165,0,0.22);
-  overflow: hidden;
-  border-radius: 0;
-  padding: 0;
-}
-.member-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 28%;
-  display: block;
-  filter: brightness(1.05) contrast(1.1);
-}
 .feature-card {
   transform-style: preserve-3d;
   will-change: transform;
@@ -236,67 +235,183 @@ h1          { animation:fadeUp 0.5s ease 0.22s both; }
 .gallery-item {
   cursor: pointer;
   transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), box-shadow 0.35s ease, z-index 0s;
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
 }
 .gallery-item:hover {
-  transform: scale(1.08);
-  z-index: 10;
+  transform: scale(1.08); z-index: 10;
   box-shadow: 0 0 60px rgba(240,165,0,0.18), 0 0 120px rgba(240,165,0,0.07);
 }
 .gallery-grid { position: relative; }
 .gallery-grid:has(.gallery-item:hover) .gallery-item:not(:hover) {
-  opacity: 0.35;
-  filter: brightness(0.55);
+  opacity: 0.35; filter: brightness(0.55);
   transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease;
 }
 .team-grid { position: relative; }
 .team-card {
   cursor: pointer;
   transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), box-shadow 0.35s ease;
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
 }
 .team-card:hover {
-  transform: scale(1.06);
-  z-index: 10;
+  transform: scale(1.06); z-index: 10;
   box-shadow: 0 0 50px rgba(240,165,0,0.18), 0 0 100px rgba(240,165,0,0.07);
 }
 .team-grid:has(.team-card:hover) .team-card:not(:hover) {
-  opacity: 0.35;
-  filter: brightness(0.55);
+  opacity: 0.35; filter: brightness(0.55);
   transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease;
 }
-
-/* ── TEAM CONTACTS ── */
-.team-contacts {
-  display: flex;
-  gap: 8px;
-  margin-top: 0.6rem;
-}
-.team-contacts a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  border: 1.5px solid var(--border2);
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 700;
-  font-family: var(--mono);
-  transition: border-color 0.2s, color 0.2s, transform 0.15s;
-}
-.team-contacts a:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-2px);
-}
 </style>
+</head>
+<body>
 
-    
+<nav>
+  <a class="logo" href="#hero">TORQ<span>.</span></a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#team">Team</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <canvas id="mecanum-bg"></canvas>
+  <script>
+  (function(){
+    const canvas = document.getElementById('mecanum-bg');
+    const ctx = canvas.getContext('2d');
+    canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;z-index:0;';
+    function resize(){ canvas.width=canvas.offsetWidth||window.innerWidth; canvas.height=canvas.offsetHeight||500; }
+    resize(); window.addEventListener('resize', resize);
+    const A = 'rgba(240,165,0,';
+    function drawWheel(cx, cy, R, spin, alpha){
+      const N = 8;
+      ctx.save(); ctx.globalAlpha = alpha; ctx.translate(cx, cy);
+      ctx.beginPath(); ctx.arc(0,0,R+4,0,Math.PI*2);
+      ctx.strokeStyle=A+'0.06)'; ctx.lineWidth=8; ctx.stroke();
+      ctx.beginPath(); ctx.arc(0,0,R,0,Math.PI*2);
+      ctx.fillStyle=A+'0.04)'; ctx.fill();
+      ctx.strokeStyle=A+'0.55)'; ctx.lineWidth=2; ctx.stroke();
+      ctx.beginPath(); ctx.arc(0,0,R*0.3,0,Math.PI*2);
+      ctx.fillStyle=A+'0.08)'; ctx.fill();
+      ctx.strokeStyle=A+'0.4)'; ctx.lineWidth=1.2; ctx.stroke();
+      for(let i=0;i<N;i++){
+        const a=spin+(i/N)*Math.PI*2;
+        ctx.save(); ctx.rotate(a);
+        ctx.strokeStyle=A+'0.18)'; ctx.lineWidth=0.8;
+        ctx.beginPath(); ctx.moveTo(0,R*0.3); ctx.lineTo(0,R*0.65); ctx.stroke();
+        ctx.restore();
+      }
+      for(let i=0;i<N;i++){
+        const a=spin+(i/N)*Math.PI*2;
+        const rx=Math.cos(a)*R*0.82, ry=Math.sin(a)*R*0.82;
+        const rlen=R*0.36, rw=R*0.1;
+        ctx.save(); ctx.translate(rx,ry); ctx.rotate(a+Math.PI/4);
+        const lit=0.4+0.6*Math.cos(a+Math.PI*0.25);
+        ctx.beginPath();
+        if(ctx.roundRect) ctx.roundRect(-rw/2,-rlen/2,rw,rlen,rw/2);
+        else ctx.rect(-rw/2,-rlen/2,rw,rlen);
+        ctx.fillStyle=A+(0.06+lit*0.16)+')';
+        ctx.strokeStyle=A+(0.35+lit*0.4)+')';
+        ctx.lineWidth=0.9; ctx.fill(); ctx.stroke();
+        ctx.restore();
+      }
+      ctx.beginPath(); ctx.arc(0,0,R*0.14,0,Math.PI*2);
+      ctx.fillStyle=A+'0.45)'; ctx.fill();
+      ctx.beginPath(); ctx.arc(0,0,R*0.07,0,Math.PI*2);
+      ctx.fillStyle='#f0a500'; ctx.fill();
+      ctx.restore();
+    }
+    function drawGrid(){
+      ctx.strokeStyle=A+'0.025)'; ctx.lineWidth=0.5;
+      for(let x=0;x<canvas.width;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke();}
+      for(let y=0;y<canvas.height;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke();}
+    }
+    let t=0;
+    function frame(ts){
+      t=ts/1000;
+      const W=canvas.width, H=canvas.height;
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle='#1a1d21'; ctx.fillRect(0,0,W,H);
+      drawGrid();
+      const R=Math.min(W,H)*0.38;
+      drawWheel(W*0.72, H*0.5,  R,       t*0.55,       0.68);
+      drawWheel(W*0.96, H*0.84, R*0.52,  t*0.55+0.4,   0.26);
+      drawWheel(W*0.91, H*0.1,  R*0.30,  t*0.55+1.1,   0.13);
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+  </script>
+
+  <div class="hero-left">
+    <div class="hero-badge">
+      <svg width="16" height="16" viewBox="0 0 7 7" xmlns="http://www.w3.org/2000/svg">
+        <rect width="7" height="7" fill="#f0a500" opacity="0.12"/>
+        <rect x="1" y="1" width="2" height="2" fill="#f0a500"/>
+        <rect x="4" y="1" width="2" height="2" fill="#f0a500"/>
+        <rect x="1" y="4" width="2" height="2" fill="#f0a500"/>
+        <rect x="3" y="3" width="1" height="1" fill="#f0a500"/>
+        <rect x="5" y="5" width="1" height="1" fill="#f0a500"/>
+      </svg>
+      Graduation Project &mdash; 2026
+    </div>
+    <h1 id="torq-title">T<canvas id="wheel-o" width="90" height="90" style="display:inline-block;vertical-align:middle;margin:0 2px 8px;cursor:default;"></canvas>RQ</h1>
+    <p class="hero-sub">Autonomous warehouse forklift powered by mecanum-wheel mobility, winch-driven lifting, and computer vision.</p>
+    <p class="hero-uni">Cairo University &middot; Faculty of Engineering &middot; Mechatronics (MEE)</p>
+    <div class="hero-ctas">
+      <a href="#features" class="btn-primary">Explore the system</a>
+      <a href="#gallery" class="btn-ghost">View demos</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-icon">&#9881;</div><div class="stat-text"><div class="stat-val">4</div><div class="stat-label">Mecanum Wheels</div></div></div>
+  <div class="stat"><div class="stat-icon">&#8635;</div><div class="stat-text"><div class="stat-val">360°</div><div class="stat-label">Omnidirectional</div></div></div>
+  <div class="stat"><div class="stat-icon">&#9678;</div><div class="stat-text"><div class="stat-val">ArUco</div><div class="stat-label">Vision System</div></div></div>
+  <div class="stat"><div class="stat-icon">&#8679;</div><div class="stat-text"><div class="stat-val">Auto</div><div class="stat-label">Winch Lifter</div></div></div>
+  <div class="stat"><div class="stat-icon">&#10022;</div><div class="stat-text"><div class="stat-val">6</div><div class="stat-label">Team Members</div></div></div>
+</div>
+
+<section id="about">
+  <div class="section-tag">// 01 &mdash; Overview</div>
+  <h2>What is TORQ?</h2>
+  <p class="lead">A fully autonomous forklift robot designed for warehouse environments — built to navigate, locate, and lift pallets without human intervention.</p>
+  <div class="about-grid">
+    <div class="about-cell"><h3>The Problem</h3><p>Modern warehouses are pushing upward to save floor space — but conventional forklifts can't keep up. Bulky, slow, and operator-dependent, they struggle in tight aisles and drive up costs through energy waste, idle time, and human error.</p></div>
+    <div class="about-cell"><h3>Our Solution</h3><p>TORQ is a compact, fully autonomous forklift that moves in any direction, lifts with precision, and navigates complex warehouse environments without a human at the controls — cutting costs, saving space, and keeping operations running.</p></div>
+    <div class="about-cell"><h3>Mecanum Mobility</h3><p>Four mecanum wheels allow TORQ to translate in any direction — forward, sideways, and diagonally — without rotating the chassis, making it ideal for tight warehouse aisles.</p></div>
+    <div class="about-cell"><h3>Computer Vision</h3><p>An onboard camera detects ArUco fiducial markers on pallets, computing real-time pose estimation to guide precise alignment and autonomous docking.</p></div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="section-tag">// 02 &mdash; Key Systems</div>
+  <h2>System architecture</h2>
+  <p class="lead">Four core subsystems working in concert to deliver fully autonomous pallet handling.</p>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-num">01</div><h3>Mecanum Drive</h3><p>Four independently driven wheels with angled rollers produce omnidirectional motion — enabling lateral slides and diagonal paths with zero turning radius.</p></div>
+    <div class="feature-card"><div class="feature-num">02</div><h3>Winch Lifter</h3><p>A motorised winch system raises and lowers the forks with precision, handling vertical load while keeping the platform centre of mass stable throughout the lift cycle.</p></div>
+    <div class="feature-card"><div class="feature-num">03</div><h3>ArUco Vision</h3><p>Onboard camera detects printed ArUco markers on pallets. Pose estimation algorithms extract real-time position and orientation for precise docking maneuvers.</p></div>
+    <div class="feature-card"><div class="feature-num">04</div><h3>Autonomous Control</h3><p>Sensor fusion ties navigation, vision, and actuation together — TORQ plans its path, approaches the target, docks, lifts, and transports without any operator input.</p></div>
+    <div class="feature-card feature-wide"><div class="feature-num">05</div><h3>Seamless Mode Switching</h3><p>Switch instantly between fully autonomous and manual teleoperation — ideal for edge-case overrides, setup, and maintenance. Transitions are smooth and state-preserving, requiring no restart or re-initialisation.</p></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-tag">// 03 &mdash; Demo</div>
+  <h2>Project Demonstration</h2>
+  <p class="lead">Explore the complete TORQ journey—from identifying warehouse logistics challenges and developing the solution to autonomous navigation, pallet handling, and real-world system demonstrations.</p>
+  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:24px; box-shadow:0 20px 60px rgba(0,0,0,0.6); margin-top:2rem;">
+    <iframe
+      src="https://www.youtube.com/embed/dQhUrZ8Ut10?rel=0&modestbranding=1&controls=1"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
 <!-- TEAM -->
 <section id="team">
   <div class="section-tag">// 04 &mdash; The Team</div>
@@ -307,84 +422,84 @@ h1          { animation:fadeUp 0.5s ease 0.22s both; }
 
     <!-- 1. Abdulrahman Khalid -->
     <div class="team-card">
-      <div class="avatar avatar-photo" style="width:100%;aspect-ratio:1/1;height:auto;margin-bottom:1rem;">
-        <img src="Abdulrahman.jpg" alt="Abdulrahman Khalid" class="member-photo"/>
+      <div class="avatar avatar-photo">
+        <img src="abd.jpg" alt="Abdulrahman Khalid" class="member-photo"/>
       </div>
       <div class="team-name">Abdulrahman Khalid</div>
       <div class="team-role">Hardware &amp; Software</div>
       <span class="role-badge badge-both">HW / SW</span>
       <div class="team-contacts">
-        <a href="mailto:abdulrhman.khalid70@gmail.com" title="Email">✉</a>
+        <a href="mailto:abdulrhman.khalid70@gmail.com" title="Email">&#9993;</a>
         <a href="#" target="_blank" title="LinkedIn">in</a>
       </div>
     </div>
 
     <!-- 2. Fatma Abdelaziz -->
     <div class="team-card">
-      <div class="avatar avatar-photo" style="width:100%;aspect-ratio:1/1;height:auto;margin-bottom:1rem;">
-        <img src="Fatma.jpg" alt="Fatma Abdelaziz" class="member-photo"/>
+      <div class="avatar avatar-photo">
+        <img src="fatma.png" alt="Fatma Abdelaziz" class="member-photo"/>
       </div>
       <div class="team-name">Fatma Abdelaziz</div>
       <div class="team-role">Hardware</div>
       <span class="role-badge badge-hw">Hardware</span>
       <div class="team-contacts">
-        <a href="mailto:Fatmaelagha4@gmail.com" title="Email">✉</a>
+        <a href="mailto:Fatmaelagha4@gmail.com" title="Email">&#9993;</a>
         <a href="#" target="_blank" title="LinkedIn">in</a>
       </div>
     </div>
 
     <!-- 3. Zeena El Abassy -->
     <div class="team-card">
-      <div class="avatar avatar-photo" style="width:100%;aspect-ratio:1/1;height:auto;margin-bottom:1rem;">
-        <img src="Zeena.jpg" alt="Zeena El Abassy" class="member-photo"/>
+      <div class="avatar avatar-photo">
+        <img src="zeena.jpg" alt="Zeena El Abassy" class="member-photo"/>
       </div>
       <div class="team-name">Zeena El Abassy</div>
       <div class="team-role">Hardware</div>
       <span class="role-badge badge-hw">Hardware</span>
       <div class="team-contacts">
-        <a href="mailto:email@example.com" title="Email">✉</a>
+        <a href="mailto:email@example.com" title="Email">&#9993;</a>
         <a href="#" target="_blank" title="LinkedIn">in</a>
       </div>
     </div>
 
     <!-- 4. Rawan Samawal -->
     <div class="team-card">
-      <div class="avatar avatar-photo" style="width:100%;aspect-ratio:1/1;height:auto;margin-bottom:1rem;">
-        <img src="Rawan.jpg" alt="Rawan Samawal" class="member-photo"/>
+      <div class="avatar avatar-photo">
+        <img src="rawan.jpeg" alt="Rawan Samawal" class="member-photo"/>
       </div>
       <div class="team-name">Rawan Samawal</div>
       <div class="team-role">Software</div>
       <span class="role-badge badge-sw">Software</span>
       <div class="team-contacts">
-        <a href="mailto:samawal.rawan@gmail.com" title="Email">✉</a>
+        <a href="mailto:samawal.rawan@gmail.com" title="Email">&#9993;</a>
         <a href="#" target="_blank" title="LinkedIn">in</a>
       </div>
     </div>
 
     <!-- 5. Malak Sallam -->
     <div class="team-card">
-      <div class="avatar avatar-photo" style="width:100%;aspect-ratio:1/1;height:auto;margin-bottom:1rem;">
+      <div class="avatar avatar-photo">
         <img src="Malak.jpg" alt="Malak Sallam" class="member-photo"/>
       </div>
       <div class="team-name">Malak Sallam</div>
       <div class="team-role">Software</div>
       <span class="role-badge badge-sw">Software</span>
       <div class="team-contacts">
-        <a href="mailto:malak.sallam1406@gmail.com" title="Email">✉</a>
+        <a href="mailto:malak.sallam1406@gmail.com" title="Email">&#9993;</a>
         <a href="#" target="_blank" title="LinkedIn">in</a>
       </div>
     </div>
 
     <!-- 6. Rana Atef -->
     <div class="team-card">
-      <div class="avatar avatar-photo" style="width:100%;aspect-ratio:1/1;height:auto;margin-bottom:1rem;">
-        <img src="Rana.jpg" alt="Rana Atef" class="member-photo"/>
+      <div class="avatar avatar-photo">
+        <img src="rana.jpeg" alt="Rana Atef" class="member-photo"/>
       </div>
       <div class="team-name">Rana Atef</div>
       <div class="team-role">Software</div>
       <span class="role-badge badge-sw">Software</span>
       <div class="team-contacts">
-        <a href="mailto:Ranaatef3210@gmail.com" title="Email">✉</a>
+        <a href="mailto:Ranaatef3210@gmail.com" title="Email">&#9993;</a>
         <a href="#" target="_blank" title="LinkedIn">in</a>
       </div>
     </div>
@@ -397,8 +512,6 @@ h1          { animation:fadeUp 0.5s ease 0.22s both; }
   <div class="footer-center">Cairo University<br/>Faculty of Engineering &middot; Mechatronics Department (MEE)<br/>Graduation Project &middot; 2026</div>
   <div class="footer-right">Built with<br/>mecanum wheels<br/>&amp; computer vision</div>
 </footer>
-
-
 
 <script>
 (function(){
@@ -433,26 +546,17 @@ h1          { animation:fadeUp 0.5s ease 0.22s both; }
   function draw(angle){
     ctx.clearRect(0,0,S,S);
     const cx = S/2, cy = S/2, R = S/2 - 4;
-
     ctx.save();
     ctx.translate(cx, cy);
     ctx.rotate(angle);
-
-    // outer glow
     ctx.beginPath(); ctx.arc(0,0,R+2,0,Math.PI*2);
     ctx.strokeStyle='rgba(240,165,0,0.15)'; ctx.lineWidth=6; ctx.stroke();
-
-    // rim fill
     ctx.beginPath(); ctx.arc(0,0,R,0,Math.PI*2);
     ctx.fillStyle='rgba(240,165,0,0.07)'; ctx.fill();
     ctx.strokeStyle=AMBER; ctx.lineWidth=2.5; ctx.stroke();
-
-    // inner ring
     ctx.beginPath(); ctx.arc(0,0,R*0.28,0,Math.PI*2);
     ctx.fillStyle='rgba(240,165,0,0.1)'; ctx.fill();
     ctx.strokeStyle='rgba(240,165,0,0.55)'; ctx.lineWidth=1.2; ctx.stroke();
-
-    // spokes
     for(let i=0;i<N;i++){
       const a=(i/N)*Math.PI*2;
       ctx.save(); ctx.rotate(a);
@@ -460,8 +564,6 @@ h1          { animation:fadeUp 0.5s ease 0.22s both; }
       ctx.beginPath(); ctx.moveTo(0,R*0.28); ctx.lineTo(0,R*0.65); ctx.stroke();
       ctx.restore();
     }
-
-    // rollers at 45deg
     for(let i=0;i<N;i++){
       const a=(i/N)*Math.PI*2;
       const rx=Math.cos(a)*R*0.82, ry=Math.sin(a)*R*0.82;
@@ -476,26 +578,18 @@ h1          { animation:fadeUp 0.5s ease 0.22s both; }
       ctx.lineWidth=1; ctx.fill(); ctx.stroke();
       ctx.restore();
     }
-
-    // hub
     ctx.beginPath(); ctx.arc(0,0,R*0.13,0,Math.PI*2);
     ctx.fillStyle='rgba(240,165,0,0.5)'; ctx.fill();
     ctx.beginPath(); ctx.arc(0,0,R*0.065,0,Math.PI*2);
     ctx.fillStyle=AMBER; ctx.fill();
-
     ctx.restore();
   }
 
-  // initial draw
   draw(0);
-
-  // spin on scroll
   window.addEventListener('scroll', () => {
     spin += window.scrollY * 0.003;
     draw(spin);
   }, { passive: true });
-
-  // also idle slow spin on hero
   let idle = 0;
   function idleSpin(){
     idle += 0.004;
@@ -505,5 +599,6 @@ h1          { animation:fadeUp 0.5s ease 0.22s both; }
   idleSpin();
 })();
 </script>
+
 </body>
 </html>
