@@ -491,15 +491,11 @@ h1          { animation:fadeUp 0.5s ease 0.22s both; }
   </p>
 
   <!-- ADD THIS LINE -->
-  <p style="color:red;">VIDEO SHOULD APPEAR BELOW</p>
-
-  <div style="max-width:1000px;margin:auto;">
-    <video controls width="100%" style="border-radius:18px;">
-      <source src="./test.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</section>
+<div style="max-width:1000px; margin:auto;">
+  <video controls style="width:100%; aspect-ratio:16/9; border-radius:18px; object-fit:cover;">
+    <source src="./video/test.mp4" type="video/mp4">
+  </video>
+</div>
 
 
 <section id="team">
